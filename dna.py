@@ -34,26 +34,32 @@ def main():
 
 
 def read_db(filename):
+    # Initialize an empty list to store database entries
     datalist = []
     with open(filename, 'r') as file:
+        # Create a CSV reader object
         reader = csv.DictReader(file)
+        # Iterate over each row in the CSV file
         for row in reader:
+            # Append each row as a dictionary to the datalist
             datalist.append(row)
-            # if len(datalist) <= 5:
-            #     print(row)
 
     return datalist
 
 
 def build_db(datalist):
+    # Initialize an empty dictionary to store the database
     database = {}
+    # Iterate over each row in the datalist
     for row in datalist:
+        # Extract the name from the row and remove it from the dictionary
         name = row.pop('name')
+        # Convert the remaining values to integers and store them in the database
         database[name] = {k: int(v) for k, v in row.items() if v.isdigit()}
     return database
 
 
-# TODO: Find longest match of each STR in DNA sequence
+# Find longest match of each STR in DNA sequence
 
 
 def longest_str_match(database, sequence):
@@ -77,13 +83,10 @@ def longest_str_match(database, sequence):
             else:
                 i += 1
         longest_str_match[str_pattern] = longest_str
-        # # Debugging print statements
-        # print(f"STR pattern: {str_pattern}, Longest STR: {longest_str}")
-        longest_str_match[str_pattern] = longest_str
 
     return longest_str_match
 
-# TODO: Check database for matching profiles
+# Check database for matching profiles
 
 
 def check_db_matches(database, longest_matches):
@@ -91,19 +94,16 @@ def check_db_matches(database, longest_matches):
     # For each profile, compare the number of times each STR occurs in the profile with the longest match of each STR in the DNA sequence.
     for profile_name, profile_data in database.items():
         match_found = True
-
         for str_name, str_count in profile_data.items():
             if str_count != longest_matches.get(str_name, 0):
                 match_found = False
                 break
-
         # If all STR counts match, you've found a match. Print the name of the individual and return.
         if match_found:
             print(profile_name)
             return
-        # If no match is found after checking all profiles, print "No match".
+    # If no match is found after checking all profiles, print "No match".
     print("No match")
-    return
 
 
 def longest_match(sequence, subsequence):
