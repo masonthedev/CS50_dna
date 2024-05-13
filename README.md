@@ -3,11 +3,6 @@
 **DNA Analysis Tool**
 This Python script analyzes DNA sequences to identify individuals based on their Short Tandem Repeats (STRs) profiles. It reads a database of individuals' STR counts and compares them against the STR counts in a given DNA sequence file to determine potential matches.
 
-**Table of Contents**
-
-Usage
-Examples
-
 **Usage**
 
 To use the DNA analysis tool, run the dna.py script with the following command-line arguments:
