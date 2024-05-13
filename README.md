@@ -18,3 +18,9 @@ python dna.py databases/database.csv sequences/sequence.txt
 This command will analyze the DNA sequence in sequence.txt using the database in database.csv and output any matching individuals.
 
 
+Results:
+
+Run as python dna.py databases/small.csv sequences/1.txt. Program should output Bob.
+Run as python dna.py databases/small.csv sequences/2.txt. Program should output No match.
+Run as python dna.py databases/small.csv sequences/3.txt. Program should output No match.
+Run as python dna.py databases/small.csv sequences/4.txt. Program should output Alice.
